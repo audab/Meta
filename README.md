@@ -64,6 +64,8 @@ public function index()
     Meta::name("keywords", "awesome, keywords"); // <meta name="keywords" content="awesome, keywords">
     Meta::name("description", "The best website you've ever seen"); // <meta name="description" content="The best website you've ever seen">
     Meta::equiv("content-type", "text/html; charset=UTF-8"); // <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    Meta::link("alternate", ["hreflang" => "en", "href" => "amazing-website.com/en"]); // <link rel="alternate" hreflang="en" href="amazing-website.com/en">
+    Meta::link("alternate", ["hreflang" => "fr", "href" => "amazing-website.com/fr"]); // <link rel="alternate" hreflang="fr" href="amazing-website.com/fr">
     return View::make("index");
 }
 ```

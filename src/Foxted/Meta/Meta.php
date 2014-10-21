@@ -73,6 +73,12 @@ class Meta
         array_push($this->tags, $this->unpairedTag('meta', $attributes));
     }
 
+    public function link( $rel, $attributes )
+    {
+        $attributes['rel'] = $rel;
+        array_push($this->tags, $this->unpairedTag('link', $attributes));
+    }
+
     /**
      * Build a http-equiv meta tag
      * @param $http_equiv
