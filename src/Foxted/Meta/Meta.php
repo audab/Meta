@@ -41,6 +41,13 @@ class Meta
      * @var array
      */
     protected $tags = [];
+
+    /**
+     * Array that contains all language link
+     * @var array
+     */
+    protected $lang = [];
+
     /**
      * @var array
      */
@@ -76,6 +83,10 @@ class Meta
     public function link( $rel, $attributes )
     {
         $attributes['rel'] = $rel;
+        if ($rel = 'alternate') {
+            array_push($this->lang, $attributes);
+            unset($attributes['data-label']);
+        }
         array_push($this->tags, $this->unpairedTag('link', $attributes));
     }
 
@@ -111,6 +122,18 @@ class Meta
     {
         return $this->viewFactory->make('meta::meta', [
             'metas' => $this->getTags()
+        ]);
+    }
+
+    /**
+     * Render the full select language block
+     *
+     * @return \Illuminate\View\Factory
+     */
+    public function render_selectlang()
+    {
+        return $this->viewFactory->make('meta::selectlang', [
+            'links' => $this->lang
         ]);
     }
 
